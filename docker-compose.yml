@@ -1,0 +1,18 @@
+# Use root/example as user/password credentials
+version: '3.8'
+
+services:
+
+  db:
+    image: mysql:8.0.35
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    profiles: [local]
+    environment:
+      MYSQL_DATABASE: principal_test_db_dev
+      MYSQL_ROOT_PASSWORD: principal_root_dev
+      MYSQL_USER: principal_test_user_dev
+      MYSQL_PASSWORD: principal_test_pass_dev
+      SPRING_PROFILES_ACTIVE: local
