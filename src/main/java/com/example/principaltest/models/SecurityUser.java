@@ -12,7 +12,7 @@ public record SecurityUser(LoginUser user) implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.stream(user.getRoles().split(",")).sequential().map(role -> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+        return Arrays.stream(user.getRoles().split(",")).sequential().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
     @Override

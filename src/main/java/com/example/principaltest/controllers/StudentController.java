@@ -68,7 +68,6 @@ public class StudentController {
                                               Principal principal) {
         log.debug(String.format("create %s", request.student().toString()));
 
-        // This line throws a NPE because Principal is null
         Student entity = studentService.createStudent(request.student(), principal.getName());
 
         URI locationOfNewEntity = uriComponentsBuilder
